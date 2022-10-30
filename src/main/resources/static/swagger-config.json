@@ -1,0 +1,13 @@
+{
+  "urls": [
+
+{
+  "url": "/v3/api-docs",
+  "name": "monolith"
+},
+    {
+      "url": "/environments/api-docs",
+      "name": "environments"
+    }
+  ]
+}

@@ -1,0 +1,77 @@
+info:
+  app:
+    name: 'Ruben-NOVI'
+    description: 'ravel-backend-01'
+    version: " H2 "
+    environment: "H2"
+  company:
+    name: 'NOVI'
+  link: 'http://localhost:8080'
+
+application:
+  directories:
+    aws:
+      s3: 'h2'
+  urls:
+    frontend: 'http://localhost:3000'
+    backend: 'http://localhost:8080'
+
+security:
+  constant:
+    jwt:
+      secret: 'jwtSecret'
+      jwtExpirationMs: '432000000'
+      audience: 'h2'
+      issuer: 'Ruben-Novi'
+      clientId: 'jwtSecret'
+
+
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: never
+  forward-headers-strategy: framework
+
+spring:
+  mail:
+    host: smtp.gmail.com
+    password: zxuwhjkjhuwfjske
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          starttls:
+            enable: true
+            required: true
+          timeout: 5000
+          writetimeout: 5000
+    username: rubenlangeweg.novi.be@gmail.com
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 20MB
+      max-request-size: 20MB
+      file-size-threshold: 2KB
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  datasource:
+    driverClassName: org.h2.Driver
+    password: password
+    url: jdbc:h2:mem:testdb
+    username: sa
+  h2:
+    console:
+      enabled: true
+      path: /h2-dev
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+    doc-expansion: none

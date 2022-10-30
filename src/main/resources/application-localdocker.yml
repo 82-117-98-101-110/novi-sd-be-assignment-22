@@ -1,0 +1,94 @@
+info:
+  app:
+    name: 'Ruben-NOVI'
+    description: 'ravel-backend-01'
+    version: " LOCAL "
+    environment: " LOCAL "
+  company:
+    name: 'Ravel'
+  link: 'http://localhost:8080'
+application:
+  directories:
+    aws:
+      s3: 'localdocker'
+  urls:
+    frontend: 'http://localhost:3000'
+    backend: 'http://localhost:8080'
+security:
+  constant:
+    jwt:
+      secret: 'jwtSecret'
+      jwtExpirationMs: '432000000'
+      audience: 'http://localhost:8080'
+      issuer: 'Ruben-Novi'
+      clientId: 'jwtSecret'
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: never
+  forward-headers-strategy: framework
+spring:
+  mail:
+    host: smtp.gmail.com
+    username: rubenlangeweg.novi.be@gmail.com
+    password: zxuwhjkjhuwfjske
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          starttls:
+            enable: true
+            required: true
+          timeout: 5000
+          writetimeout: 5000
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+      file-size-threshold: 2KB
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  datasource:
+    password: ''
+    url: jdbc:postgresql://host.docker.internal:5432/postgres
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    defer-datasource-initialization: off
+    sql:
+      init:
+        mode: never
+springdoc:
+  show-actuator: on
+  show-login-endpoint: on
+  swagger-ui:
+    display-request-duration: true
+    doc-expansion: none
+    tags-sorter: alpha
+    operations-sorter: alpha
+sentry:
+  debug: true
+  dsn: https://37639540af9e4dcc8c60296a57d1ae6f@o1132931.ingest.sentry.io/6178937
+  in-app-includes: com.ravel.backend
+  logging:
+    enabled: true
+    minimum-breadcrumb-level: debug
+    minimum-event-level: info
+  sample-rate: 1
+  send-default-pii: true
+  traces-sample-rate: 1
+  environment: 'local-docker'
+  release: 'local-docker'

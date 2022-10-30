@@ -1,0 +1,98 @@
+info:
+  app:
+    name: 'Ruben-NOVI'
+    description: 'ravel-backend-01'
+    version: "rubenlangeweg/ravel-backend-01:7.12.2021.8.46.49"
+    environment: "DEVELOPMENT"
+  company:
+    name: 'Ravel'
+  link: 'https://dev.ravel.systems'
+application:
+  directories:
+    aws:
+      s3: 'dev'
+  urls:
+    frontend: 'https://dev.ravel.world'
+    backend: 'https://dev.ravel.systems'
+security:
+  constant:
+    jwt:
+      secret: 'jwtSecret'
+      jwtExpirationMs: '999900000'
+      audience: 'http://localhost:8080'
+      issuer: 'Ruben-Novi'
+      clientId: 'jwtSecret'
+server:
+  error:
+    include-binding-errors: always
+    include-message: always
+    include-stacktrace: never
+  forward-headers-strategy: framework
+spring:
+  mail:
+    host: smtp.gmail.com
+    username: rubenlangeweg.novi.be@gmail.com
+    password: zxuwhjkjhuwfjske
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          connectiontimeout: 5000
+          starttls:
+            enable: true
+            required: true
+          timeout: 5000
+          writetimeout: 5000
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 100MB
+      file-size-threshold: 2KB
+  mvc:
+    throw-exception-if-no-handler-found: true
+  resources:
+    add-mappings: false
+  datasource:
+    password: secret
+    url: jdbc:postgresql://ruben.ccofsjpgtmun.eu-central-1.rds.amazonaws.com:5432/postgres
+    username: postgres_ro
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    defer-datasource-initialization: off
+    sql:
+      init:
+        mode: never
+springdoc:
+  swagger-ui:
+    display-request-duration: true
+    doc-expansion: none
+    tags-sorter: alpha
+    operations-sorter: alpha
+    enabled: true
+    config-url: /swagger-config.json
+  show-actuator: on
+  show-login-endpoint: on
+  api-docs:
+    enabled: true
+sentry:
+  debug: false
+  dsn: https://37639540af9e4dcc8c60296a57d1ae6f@o1132931.ingest.sentry.io/6178937
+  in-app-includes: com.ravel.backend
+  logging:
+    enabled: true
+    minimum-breadcrumb-level: debug
+    minimum-event-level: info
+  sample-rate: 0.3
+  send-default-pii: true
+  traces-sample-rate: 0.3
+  environment: 'DEVELOPMENT'
+  release: "rubenlangeweg/ravel-backend-01:27.10.2021.16.15.27"
