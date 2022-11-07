@@ -4,6 +4,7 @@ metadata:
   name: novi-sd-be-assignment-22
   annotations:
     github.com/project-slug: 82-117-98-101-110/novi-sd-be-assignment-22
+    backstage.io/techdocs-ref: https://github.com/82-117-98-101-110/novi-sd-be-assignment-22/blob/main/README.md
 spec:
   type: backend application
   lifecycle: production
