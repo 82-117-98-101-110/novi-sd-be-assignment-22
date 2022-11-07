@@ -5,6 +5,6 @@ metadata:
   annotations:
     github.com/project-slug: 82-117-98-101-110/novi-sd-be-assignment-22
 spec:
-  type: other
-  lifecycle: unknown
+  type: backend application
+  lifecycle: production
   owner: guests
